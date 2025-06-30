@@ -1,0 +1,10 @@
+
+{
+  "development": {
+    "username": "postgres",
+    "password": null,
+    "database": "avis_produits",
+    "host": "localhost",
+    "dialect": "postgres"
+  }
+}
