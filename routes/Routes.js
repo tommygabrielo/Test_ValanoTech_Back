@@ -1,7 +1,7 @@
 const express = require('express');
 const { authenticateToken, isAdmin } = require('../middleware/auth');
 const router = express.Router();
-const produitController = require('../controllers/produitcontroller');
+const produitController = require('../controllers/produitController');
 const avisController = require('../controllers/avisController');
 
 router.get('/', produitController.getAllProduits);
