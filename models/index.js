@@ -11,10 +11,15 @@ const db = {};
 let sequelize;
 
 if (config.use_env_variable) {
-  // En production sur Render, Sequelize va chercher process.env.DATABASE_URL
   sequelize = new Sequelize(process.env[config.use_env_variable], {
     dialect: config.dialect,
-    logging: false, // désactive les logs SQL en prod
+    dialectOptions: {
+      ssl: {
+        require: true,
+        rejectUnauthorized: false,
+      },
+    },
+    logging: false,
   });
 } else {
   sequelize = new Sequelize(
@@ -24,10 +29,11 @@ if (config.use_env_variable) {
     {
       host: config.host,
       dialect: config.dialect,
-      logging: false, // facultatif : supprime les logs SQL
+      logging: false,
     }
   );
 }
+
 
 fs
   .readdirSync(__dirname)
