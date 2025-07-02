@@ -3,6 +3,7 @@ const { authenticateToken, isAdmin } = require('../middleware/auth');
 const router = express.Router();
 const produitController = require('../controllers/produitController');
 const avisController = require('../controllers/avisController');
+const userController = require('../controllers/userController');
 
 router.get('/', produitController.getAllProduits);
 router.get('/:id', produitController.getProduitById);
@@ -13,5 +14,6 @@ router.get('/produits/:id/avis', avisController.getAvisByProduit);
 router.post('/avis', avisController.addAvis);
 router.get('/avis/distribution', avisController.getDistributionAvis);
 router.get('/produits/:id/moyenne', avisController.getMoyenneByProduit);
+router.post('/user', userController.createUser);
 
 module.exports = router;
